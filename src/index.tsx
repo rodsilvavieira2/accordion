@@ -1,10 +1,15 @@
 import { StrictMode } from 'react'
-import ReactDOM from 'react-dom'
+import { render } from 'react-dom'
 import { App } from './app'
 
-ReactDOM.render(
+import { ThemeProvider } from 'styled-components'
+import { theme } from './styles/theme'
+
+render(
   <StrictMode>
-    <App />
+    <ThemeProvider theme={theme}>
+      <App />
+    </ThemeProvider>
   </StrictMode>,
   document.getElementById('root')
 )
