@@ -9,6 +9,7 @@ type AccordionProps = {
 } & AccordionAttr
 
 export const Accordion = ({
+  id,
   contentText,
   headerText,
   isOpen,
@@ -16,19 +17,22 @@ export const Accordion = ({
 }: AccordionProps) => {
   const containerRef = useRef<HTMLParagraphElement>(null)
 
+  const elementId = `accordion-header-${id}`
+  
   return (
     <Container
       normalElementHeight={containerRef.current?.scrollHeight}
       isOpen={isOpen}
-      onClick={onRequestOpen}
     >
-      <header>
+      <button onClick={onRequestOpen}>
         <HiPlus />
-        <h3>{headerText}</h3>
-      </header>
+        <h3 id={elementId}>{headerText}</h3>
+      </button>
 
-      <div>
-        <p ref={containerRef}>{contentText}</p>
+      <div aria-hidden={!isOpen}>
+        <p aria-labelledby={elementId} ref={containerRef}>
+          {contentText}
+        </p>
       </div>
     </Container>
   )

@@ -22,9 +22,14 @@ export const Container = styled.div<ContainerProps>`
     border-radius: 0.25rem 0 0 0.25rem;
   }
 
-  & > header {
+  & > button {
     display: flex;
     align-items: center;
+    width: 100%;
+    appearance: none;
+    background-color: transparent;
+    border: 0;
+    font-family: inherit;
     column-gap: 0.5rem;
     padding: 1.25rem 1.25rem 1.25rem 1rem;
     cursor: pointer;
@@ -73,7 +78,7 @@ export const Container = styled.div<ContainerProps>`
   }
 
   @media screen and (min-width: 576px) {
-    header {
+    button {
       padding: 1.5rem;
 
       h3 {
