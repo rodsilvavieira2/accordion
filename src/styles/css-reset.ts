@@ -9,7 +9,6 @@ export const CssReset = createGlobalStyle`
 
   body {
     font-family: 'Poppins', sans-serif;
-    font-size: 1rem;
     background-color: ${(props) => props.theme.colors.body};
     color: ${(props) => props.theme.colors.text};
   }

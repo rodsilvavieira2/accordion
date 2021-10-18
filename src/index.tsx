@@ -4,10 +4,12 @@ import { App } from './app'
 
 import { ThemeProvider } from 'styled-components'
 import { theme } from './styles/theme'
+import { CssReset } from './styles/css-reset'
 
 render(
   <StrictMode>
     <ThemeProvider theme={theme}>
+      <CssReset />
       <App />
     </ThemeProvider>
   </StrictMode>,

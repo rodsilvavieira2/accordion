@@ -2,18 +2,18 @@ import styled, { css } from 'styled-components'
 
 type ContainerProps = {
   isOpen: boolean
+  normalElementHeight: number | undefined
 }
 
 export const Container = styled.div<ContainerProps>`
   box-shadow: 0 2px 6px hsla(0, 0%, 15%, 0.1);
-  background-color: var(--container-color);
+  background-color: ${(props) => props.theme.colors.container};
   border-radius: 0.25rem;
   position: relative;
-  transition: all 0.25s ease;
 
   &::after {
     content: '';
-    background-color: var(--first-color);
+    background-color: ${(props) => props.theme.colors.primary};
     width: 5px;
     height: 100%;
     position: absolute;
@@ -24,24 +24,30 @@ export const Container = styled.div<ContainerProps>`
 
   & > header {
     display: flex;
+    align-items: center;
     column-gap: 0.5rem;
     padding: 1.25rem 1.25rem 1.25rem 1rem;
     cursor: pointer;
 
     & > h3 {
       font-size: ${(props) => props.theme.fontsSize.small};
+      text-align: left;
       color: ${(props) => props.theme.colors.title};
       font-weight: ${(props) => (props.isOpen ? 600 : 400)};
       margin-top: 0.15rem;
       transition: 0.2s;
+      transition: all 0.3s;
     }
 
-    & > i {
-      font-size: 1.5rem;
+    & > svg {
+      font-size: 1.2rem;
       height: max-content;
       color: ${(props) => props.theme.colors.title};
+      flex-shrink: 0;
 
-      transition: 0.3s;
+      transform: rotate(0);
+
+      transition: all 0.3s;
 
       ${(props) =>
         props.isOpen
@@ -54,11 +60,14 @@ export const Container = styled.div<ContainerProps>`
 
   & > div {
     overflow: hidden;
-    height: 0;
-    transition: all 0.25s ease;
+    max-height: ${(props) =>
+      props.isOpen ? `${props.normalElementHeight}px` : 0};
+
+    transition: all ease 0.35s;
 
     & > p {
       padding: 0 1.25rem 1.25rem 3rem;
+      text-align: justify;
       font-size: ${(props) => props.theme.fontsSize.smaller};
     }
   }
@@ -73,7 +82,7 @@ export const Container = styled.div<ContainerProps>`
     }
 
     p {
-      padding: 0 4rem 1.25rem 3.5rem;
+      padding: 0 4rem 1.25rem 3.5rem !important;
     }
   }
 `

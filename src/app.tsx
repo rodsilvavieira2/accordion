@@ -27,7 +27,7 @@ const accordions = [
     id: 4,
     headerText: 'How to choose an icon to indicate expansion?',
     contentText:
-      'You must choose a different icon to open and close, so that the user understands what action he took.',
+      'You must choose a different icon to open and close, so that the user understands what action he took. ',
     isOpen: false
   }
 ]
